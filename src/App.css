@@ -1,0 +1,7 @@
+.contact {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blueviolet;
+  padding: 15px;
+  margin-bottom: 15px;
+}

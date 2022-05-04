@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 3,
+      "name": "Vitaliy",
+      "surname": "Dadayan",
+      "age": 22
+    },
+    {
+      "id": 4,
+      "name": "Artem",
+      "surname": "Artemov",
+      "age": 23
+    }
+  ],
+  "auth": {
+    "login": "admin",
+    "password": "admin"
+  }
+}
