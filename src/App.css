@@ -1,7 +1,11 @@
 .contact {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid blueviolet;
-  padding: 15px;
-  margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blueviolet;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.text-field {
+    margin: 0 15px 15px 0 !important;
 }

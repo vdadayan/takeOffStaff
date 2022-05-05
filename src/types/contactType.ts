@@ -10,3 +10,8 @@ export interface IContacts  {
     surname: string,
     age: number
 }
+
+export interface IUser {
+    id: number
+    name: string
+}

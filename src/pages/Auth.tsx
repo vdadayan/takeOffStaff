@@ -31,12 +31,12 @@ const Auth = () => {
     return (
         <form action="" onSubmit={handleSubmit(onSubmit)}>
             <div style={{display: "flex", flexDirection: "column", maxWidth: 300, margin: 50}}>
-                <TextField {...register('login', {required: true})} label={'login'} variant="outlined"
-                           style={{marginBottom: 20}}/>
-                {errors.login && <span>This field is required</span>}
-                <TextField {...register('password', {required: true})} label={'password'} variant="outlined"
-                           type={"password"} style={{marginBottom: 20}}/>
-                {errors.password && <span>This field is required</span>}
+                <TextField className={'text-field'} {...register('login', {required: true})} label={'login'}
+                           variant="outlined"/>
+                {errors.login && <span style={{marginBottom: '15px'}}>This field is required</span>}
+                <TextField className={'text-field'} {...register('password', {required: true})} label={'password'}
+                           variant="outlined" type={"password"}/>
+                {errors.password && <span style={{marginBottom: '15px'}}>This field is required</span>}
                 <Button type={'submit'} variant="contained">send</Button>
             </div>
         </form>

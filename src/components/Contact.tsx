@@ -1,19 +1,38 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {IContacts} from "../types/contactType";
 import {useAppDispatch} from "../hooks/redux";
-import {contactAction, removeContactAction} from "../redux/actionCreators/contactAction";
+import {contactAction, removeContactAction, updateContactAction} from "../redux/actionCreators/contactAction";
+import {Button, TextField} from "@mui/material";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {InputsContact} from "../pages/Contacts";
+
 
 const Contact: FC<IContacts> = (props) => {
+    const [showEdit, setShowEdit] = useState<boolean>(false)
     const dispatch = useAppDispatch()
+    const {register, handleSubmit, formState: {errors}} = useForm<InputsContact>();
+    const onSubmit: SubmitHandler<InputsContact> = async (data) => {
+        const user = {
+            ...data,
+            id: props.id
+        }
+        await dispatch(updateContactAction(user))
+        await dispatch(contactAction(''))
+    };
     const handleDelete = async (id: number) => {
         await dispatch(removeContactAction(id))
-        await dispatch(contactAction())
+        await dispatch(contactAction(''))
     }
     return (
-        <div className='contact'>
-            <p className='contact__text'>{`${props.name} ${props.surname}`}</p>
-            <button type={"button"} onClick={e => handleDelete(props.id)}>удалить</button>
-        </div>
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+            <div className='contact'>
+                <p className='contact__text'>{props.name}</p>
+                {!showEdit && <Button onClick={e => setShowEdit(true)}>Изменить контакт</Button>}
+                {showEdit && <TextField className={'text-field'} {...register('name')} label={'Изменить данные'}
+                                        variant="outlined"/>}
+                <button type={"button"} onClick={e => handleDelete(props.id)}>удалить</button>
+            </div>
+        </form>
     );
 };
 
