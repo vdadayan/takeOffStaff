@@ -14,13 +14,11 @@ const store = setupStore()
 
 if (root) {
     root.render(
-        // @ts-ignore
-        <Provider store={store}>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Provider store={store}>
                 <App/>
-            </BrowserRouter>
-
-        </Provider>
+            </Provider>
+        </BrowserRouter>
     );
 
 }

@@ -19,9 +19,7 @@ const Auth = () => {
     const {login, password, isAuth} = useAppSelector(state => state.authReducer)
     const onSubmit: SubmitHandler<Inputs> = data => {
         if (!errors.password) {
-            if (login === data.login && password === data.password) {
-                dispatch(isAuthAction())
-            }
+            if (login === data.login && password === data.password) dispatch(isAuthAction())
         }
     };
     useEffect(() => {
@@ -30,7 +28,7 @@ const Auth = () => {
     if (isAuth) navigate('/contacts')
     return (
         <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <div style={{display: "flex", flexDirection: "column", maxWidth: 300, margin: 50}}>
+            <div className={'auth-inputGroup'}>
                 <TextField className={'text-field'} {...register('login', {required: true})} label={'login'}
                            variant="outlined"/>
                 {errors.login && <span style={{marginBottom: '15px'}}>This field is required</span>}

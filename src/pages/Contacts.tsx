@@ -27,7 +27,6 @@ const Contacts: FC = () => {
     };
 
     const searchContacts: SubmitHandler<InputsContact> = async (data) => {
-        console.log(data)
         await dispatch(contactAction(data.search))
     }
     useEffect(() => {
@@ -36,8 +35,8 @@ const Contacts: FC = () => {
     if (!isAuth) navigate('/')
     if (error) return <>{error}</>
     return (
-        <div>
-            <Link to={'/'} style={{display: "flex", marginBottom: 20}}> Назад </Link>
+        <div className={'contacts-page'}>
+            <Link className={'link'} to={'/'}> Назад </Link>
             <form action="" onSubmit={handleSubmit(onSubmit)}>
                 <TextField className={'text-field'} {...register('name')} label={'Введите имя'} variant="outlined"/>
                 <Button type={'submit'} variant="contained">Добавить контакт</Button>
@@ -47,8 +46,8 @@ const Contacts: FC = () => {
                            variant="outlined"/>
             </form>
 
-            {!isLoading && <div>
-                {contacts?.map(contact => {
+            {contacts && <div>
+                {contacts.map(contact => {
                     return <Contact key={contact.id} {...contact}/>
                 })}
             </div>}
